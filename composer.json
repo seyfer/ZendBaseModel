@@ -1,0 +1,29 @@
+{
+  "name": "seyfer/zend-base-model",
+  "version": "1.0",
+  "description": "Base classes for ZF2 development",
+  "homepage": "http://seyferseed.ru",
+  "authors": [
+    {
+      "name": "seyfer",
+      "email": "seyferseed@mail.ru",
+      "homepage": "http://seyferseed.ru",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "zendframework/zendframework": "2.3.*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.zendframework.com/"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "ZendBaseModel\\": "src/"
+    }
+  }
+}
