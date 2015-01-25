@@ -3,7 +3,6 @@
 namespace ZendBaseModel\Controller;
 
 use Doctrine\ORM\EntityRepository;
-use ZendBaseModel\Controller\BaseController;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -42,7 +41,7 @@ abstract class BaseEntityController extends BaseController
      *
      * @var
      */
-    protected $defaultSearchFormClassName = \Application\Form\SearchForm::class;
+    protected $defaultSearchFormClassName = \ZendBaseModel\Form\SearchForm::class;
     protected $defaultSearchForm;
 
     public function getControllerRepository()
