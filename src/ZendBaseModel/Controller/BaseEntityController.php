@@ -4,6 +4,7 @@ namespace ZendBaseModel\Controller;
 
 use Doctrine\ORM\EntityRepository;
 use Zend\View\Model\ViewModel;
+use ZendBaseModel\Repository\BaseRepository;
 
 /**
  * Description of BaseEntityController
@@ -20,7 +21,7 @@ abstract class BaseEntityController extends BaseController
     protected $controllerRouteParams = [];
 
     /**
-     * @var EntityRepository
+     * @var BaseRepository
      */
     protected $currentRepository;
     protected $page;
