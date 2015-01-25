@@ -10,7 +10,8 @@ namespace ZendBaseModel;
 class Date extends \DateTime
 {
 
-    const STANDARD = "Y-m-d H:i:s";
+    const STANDART       = "Y-m-d H:i:s";
+    const STANDART_SHORT = "Y-m-d";
 
     /**
      * @param        $time
@@ -30,7 +31,7 @@ class Date extends \DateTime
 
     /**
      * @param string $format
-     * @param int    $time
+     * @param int $time
      * @return bool|mixed|string
      */
     public static function dateRu($format = 'd.m.Y', $time = 0)
