@@ -21,10 +21,19 @@ abstract class BaseForm extends Form
 
     abstract protected function addElements();
 
-    protected function addTextElement($name)
+    /**
+     * @param      $name
+     * @param null $id
+     */
+    protected function addTextElement($name, $id = null)
     {
         $element = new Element\Text($name);
         $element->setLabel(ucfirst($name));
+
+        if ($id) {
+            $element->setAttribute("id", $id);
+        }
+
         $this->add($element);
     }
 }

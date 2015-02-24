@@ -1,10 +1,10 @@
-<div class='form-group'>
+<div class='form-group datetimepicker-group'>
 
     <label><?php echo $element->getLabel() ?></label>
 
     <div class='input-group date datetimepicker' data-date-format='YYYY-MM-DD'>
 
-        <input type='text' name='<?php echo $element->getName() ?>'
+        <input type='text' name='<?php echo $element->getName() ?>' id="<?php echo $element->getAttribute("id") ?>"
                class='form-control input-group date' size='10' value='<?php echo $element->getValue() ?>'>
         <span class='input-group-addon'><span class='glyphicon glyphicon-time'></span></span>
 
