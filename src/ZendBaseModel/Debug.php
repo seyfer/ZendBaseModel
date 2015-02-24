@@ -34,4 +34,17 @@ class Debug
         }
     }
 
+    /**
+     * many
+     */
+    public static function vars()
+    {
+        $vars = func_get_args();
+
+        foreach ($vars as $var) {
+            self::dump($var);
+        }
+
+    }
+
 }
