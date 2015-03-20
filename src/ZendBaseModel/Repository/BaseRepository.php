@@ -3,11 +3,11 @@
 namespace ZendBaseModel\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
-use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
-use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
-use Zend\Paginator\Paginator as ZendPaginator;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as PaginatorAdapter;
+use Zend\Paginator\Paginator as ZendPaginator;
 
 /**
  * Description of BaseRepository
@@ -168,7 +168,7 @@ class BaseRepository extends EntityRepository
      *
      * @param int $pageNum
      * @param int $currentPage
-     * @param $query
+     * @param     $query
      * @return ZendPaginator
      */
     public function getPaginatedDoctrine($pageNum = 5, $currentPage = 1, $query = null)
@@ -181,6 +181,36 @@ class BaseRepository extends EntityRepository
         }
 
         return $paginator;
+    }
+
+    /**
+     * @param Query  $query
+     * @param string $cacheItemKey
+     * @return array|bool|mixed|string
+     */
+    protected function getResultWithCache(Query $query, $cacheItemKey = '', $ttl = 0)
+    {
+        if (!$cacheItemKey) {
+            $cacheItemKey = get_called_class() . md5($query->getDQL());
+        }
+
+        /* @var $cache \DoctrineModule\Cache\ZendStorageCache */
+        $cache = $this->getEntityManager()->getConfiguration()->getResultCacheImpl();
+
+        // test if item exists in the cache
+        if ($cache->contains($cacheItemKey)) {
+
+            // retrieve item from cache
+            $items = $cache->fetch($cacheItemKey);
+        } else {
+
+            // retrieve item from repository
+            $items = $query->getResult();
+            // save item to cache
+            $cache->save($cacheItemKey, $items, $ttl);
+        }
+
+        return $items;
     }
 
 }

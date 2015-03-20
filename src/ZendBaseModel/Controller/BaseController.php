@@ -2,12 +2,12 @@
 
 namespace ZendBaseModel\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Doctrine\ORM\EntityRepository,
-    Doctrine\ORM\EntityManager;
-use Zend\Session\SessionManager,
-    Zend\Session\Container;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Zend\Form\Form;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Session\Container;
+use Zend\Session\SessionManager;
 
 /**
  * Description of BaseController
