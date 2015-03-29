@@ -2,7 +2,6 @@
 
 namespace ZendBaseModel\Controller;
 
-use Doctrine\ORM\EntityRepository;
 use Zend\View\Model\ViewModel;
 use ZendBaseModel\Repository\BaseRepository;
 
@@ -55,6 +54,10 @@ abstract class BaseEntityController extends BaseController
      */
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {
+        if (!$this->getControllerRepository()) {
+            throw new \Exception("property controllerRepository must be set");
+        }
+
         //init repository
         $this->currentRepository = $this->getEntityManager()
                                         ->getRepository($this->getControllerRepository());
