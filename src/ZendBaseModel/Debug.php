@@ -19,7 +19,7 @@ class Debug
      * @param int  $maxDepth
      * @param bool $stripTags
      */
-    public static function dump($var, $maxDepth = 2, $stripTags = true)
+    public static function dump($var, $maxDepth = 3, $stripTags = true)
     {
         if (!self::checkDevMode()) {
             return;

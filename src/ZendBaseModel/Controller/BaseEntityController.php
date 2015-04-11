@@ -2,6 +2,8 @@
 
 namespace ZendBaseModel\Controller;
 
+use Zend\Form\FormInterface;
+use Zend\InputFilter\InputFilterInterface;
 use Zend\View\Model\ViewModel;
 use ZendBaseModel\Repository\BaseRepository;
 
@@ -32,8 +34,14 @@ abstract class BaseEntityController extends BaseController
      * @var
      */
     protected $defaultFormClassName;
+    /**
+     * @var FormInterface
+     */
     protected $defaultForm;
     protected $defaultFilterClassName;
+    /**
+     * @var InputFilterInterface
+     */
     protected $defaultFilter;
 
     /**
