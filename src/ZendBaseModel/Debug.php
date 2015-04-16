@@ -12,6 +12,25 @@ use Doctrine\Common\Util\Debug as DoctrineDebug;
 class Debug
 {
 
+    public static $stripTags = FALSE;
+
+    /**
+     * @return boolean
+     */
+    public static function isStripTags()
+    {
+        return self::$stripTags;
+    }
+
+    /**
+     * @param boolean $stripTags
+     * @return $this
+     */
+    public static function setStripTags($stripTags)
+    {
+        self::$stripTags = $stripTags;
+    }
+
     /**
      * wrapper for smarter debug
      *
@@ -19,10 +38,14 @@ class Debug
      * @param int  $maxDepth
      * @param bool $stripTags
      */
-    public static function dump($var, $maxDepth = 3, $stripTags = true)
+    public static function dump($var, $maxDepth = 3, $stripTags = null)
     {
         if (!self::checkDevMode()) {
             return;
+        }
+
+        if ($stripTags === null) {
+            $stripTags = self::isStripTags();
         }
 
         ob_start();
