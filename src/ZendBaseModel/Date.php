@@ -232,25 +232,4 @@ class Date extends \DateTime
         return $timestamp ? 0 : '';
     }
 
-    /**
-     * @param \DateTimeZone $sourceTimeZone
-     * @param \DateTimeZone $needleTimeZone
-     * @param               $time
-     * @return mixed
-     */
-    public static function chanageTimeZone(\DateTimeZone $sourceTimeZone, \DateTimeZone $needleTimeZone, $time)
-    {
-
-        if (!is_numeric($time)) {
-            $time = date("Y-m-d H:i:s", self::dateconvert($time));
-        } else {
-            $time = date("Y-m-d H:i:s", $time);
-        }
-
-        $timeLimitDate = new \DateTime($time, $sourceTimeZone);
-        $timeLimitDate->setTimezone($needleTimeZone);
-
-        return $timeLimitDate->format("Y-m-d H:i:s");
-    }
-
 }
