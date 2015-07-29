@@ -11,16 +11,21 @@ trait DebugMode
 {
 
     /**
-     *
-     * @var boolean
+     * @var bool
      */
     protected $debugMode = FALSE;
 
+    /**
+     * @return bool
+     */
     public function getDebugMode()
     {
         return $this->debugMode;
     }
 
+    /**
+     * @param bool $debugMode
+     */
     public function setDebugMode($debugMode)
     {
         $this->debugMode = $debugMode;

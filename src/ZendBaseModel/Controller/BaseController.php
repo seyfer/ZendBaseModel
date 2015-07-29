@@ -54,6 +54,7 @@ abstract class BaseController extends AbstractActionController
 
     /**
      * @param \Zend\Mvc\MvcEvent $e
+     * @return mixed|void
      */
     public function onDispatch(\Zend\Mvc\MvcEvent $e)
     {

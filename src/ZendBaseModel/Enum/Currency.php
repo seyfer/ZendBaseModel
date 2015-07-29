@@ -2,8 +2,6 @@
 
 namespace ZendBaseModel\Enum;
 
-use ZendBaseModel\Enum\BaseEnum;
-
 /**
  * Description of Currency
  *

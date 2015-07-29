@@ -10,12 +10,12 @@
 
 namespace ZendBaseModel;
 
+use Zend\Console\Adapter\AdapterInterface as Console;
+use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
+use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
-use Zend\ModuleManager\Feature\ServiceProviderInterface,
-    Zend\ModuleManager\Feature\ConsoleUsageProviderInterface,
-    Zend\Console\Adapter\AdapterInterface as Console,
-    Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
 class Module implements
     ConsoleUsageProviderInterface, ServiceProviderInterface, ViewHelperProviderInterface

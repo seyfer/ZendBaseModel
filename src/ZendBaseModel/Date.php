@@ -31,7 +31,7 @@ class Date extends \DateTime
 
     /**
      * @param string $format
-     * @param int    $time
+     * @param int $time
      * @return bool|mixed|string
      */
     public static function dateRu($format = 'd.m.Y', $time = 0)

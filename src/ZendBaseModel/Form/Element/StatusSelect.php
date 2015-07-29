@@ -25,6 +25,7 @@ class StatusSelect extends Select
      * получить селект с контрактами
      *
      * @param array $options
+     * @return $this
      */
     private function configure($options = [])
     {

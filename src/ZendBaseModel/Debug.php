@@ -54,7 +54,7 @@ class Debug
      * wrapper for smarter debug
      *
      * @param      $var
-     * @param int  $maxDepth
+     * @param int $maxDepth
      * @param bool $stripTags
      */
     public static function dump($var, $maxDepth = 3, $stripTags = null)

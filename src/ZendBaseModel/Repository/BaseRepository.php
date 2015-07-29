@@ -3,6 +3,7 @@
 namespace ZendBaseModel\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
@@ -18,15 +19,53 @@ class BaseRepository extends EntityRepository
 {
 
     /**
-     *
      * @var QueryBuilder
      */
     protected $queryBuilder;
 
+    public function __construct($em, ClassMetadata $class)
+    {
+        parent::__construct($em, $class);
+
+        $this->queryBuilder = $this->getEntityManager()->createQueryBuilder();
+    }
+
+    /**
+     * Should be overloaded
+     * @param array $params
+     */
     protected function processSearchParams($params = [])
     {
         if ($params) {
 
+        }
+    }
+
+    /**
+     * @param array $params
+     * @param array $orderBy
+     * @return array
+     */
+    public function findByParams($params = [], $orderBy = [])
+    {
+        $query = $this->getSearchQuery($params, $orderBy);
+
+        return $query->getResult();
+    }
+
+    /**
+     * @param array $params
+     * @param array $orderBy
+     * @return mixed
+     */
+    public function findOneByParams($params = [], $orderBy = [])
+    {
+        $query = $this->getSearchQuery($params, $orderBy);
+        $query->setMaxResults(1);
+
+        $result = $query->getResult();
+        if (!empty($result)) {
+            return $result[0];
         }
     }
 
@@ -74,6 +113,8 @@ class BaseRepository extends EntityRepository
     /**
      * get count by query
      *
+     * @param array $params
+     * @param array $orderBy
      * @return int
      */
     public function getCountByParams($params = [], $orderBy = [])
@@ -85,7 +126,6 @@ class BaseRepository extends EntityRepository
                            ->from($this->getEntityName(), 'e');
 
         $this->processSearchParams($params);
-
         $this->addOrder($orderBy);
 
         $query = $this->queryBuilder->getQuery();
@@ -100,14 +140,13 @@ class BaseRepository extends EntityRepository
      *
      * @param        $pageCount
      * @param        $currentPage
-     * @param array  $params
-     * @param array  $orderBy
+     * @param array $params
+     * @param array $orderBy
      * @return ZendPaginator
      */
     public function findWithPaginator($pageCount, $currentPage, $params = [], $orderBy = [])
     {
-        $query = $this->getSearchQuery($params, $orderBy);
-
+        $query     = $this->getSearchQuery($params, $orderBy);
         $paginator = $this->getPaginatedDoctrine($pageCount, $currentPage, $query);
 
         return $paginator;
@@ -128,6 +167,7 @@ class BaseRepository extends EntityRepository
      * standard search query
      *
      * @param array $params
+     * @param array $orderBy
      * @return Query
      */
     public function getSearchQuery($params = [], $orderBy = [])
@@ -136,7 +176,6 @@ class BaseRepository extends EntityRepository
         $this->queryBuilder->select('e')->from($this->getEntityName(), 'e');
 
         $this->processSearchParams($params);
-
         $this->addOrder($orderBy);
 
         $query = $this->queryBuilder->getQuery();
@@ -184,8 +223,9 @@ class BaseRepository extends EntityRepository
     }
 
     /**
-     * @param Query  $query
+     * @param Query $query
      * @param string $cacheItemKey
+     * @param int $ttl
      * @return array|bool|mixed|string
      */
     protected function getResultWithCache(Query $query, $cacheItemKey = '', $ttl = 0)

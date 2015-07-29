@@ -1,31 +1,31 @@
 <?php
 
 return [
-    'doctrine'      => [
-        'driver'     => [
-            'model_entries' => [
-                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
-                'cache' => 'array',
-                'paths' => [__DIR__ . '/../src/ZendBaseModel/Entity']
-            ],
-            'orm_default'   => [
-                'drivers' => [
-                    'ZendBaseModel\Entity' => 'model_entries'
-                ]
-            ]
-        ],
-        'connection' => [
-            'orm_default' => [
-                'driverClass'  => 'BsbDoctrineReconnect\DBAL\Driver\PDOMySql\Driver',
-                'wrapperClass' => 'BsbDoctrineReconnect\DBAL\Connection',
-                'params'       => [
-                    'driverOptions' => [
-                        'x_reconnect_attempts' => 10,
-                    ],
-                ]
-            ]
-        ]
-    ],
+//    'doctrine'      => [
+//        'driver'     => [
+//            'model_entries' => [
+//                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+//                'cache' => 'array',
+//                'paths' => [__DIR__ . '/../src/ZendBaseModel/Entity']
+//            ],
+//            'orm_default'   => [
+//                'drivers' => [
+//                    'ZendBaseModel\Entity' => 'model_entries'
+//                ]
+//            ]
+//        ],
+//        'connection' => [
+//            'orm_default' => [
+//                'driverClass'  => 'BsbDoctrineReconnect\DBAL\Driver\PDOMySql\Driver',
+//                'wrapperClass' => 'BsbDoctrineReconnect\DBAL\Connection',
+//                'params'       => [
+//                    'driverOptions' => [
+//                        'x_reconnect_attempts' => 10,
+//                    ],
+//                ]
+//            ]
+//        ]
+//    ],
     'module_config' => [
     ],
     'router'        => [

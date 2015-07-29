@@ -2,9 +2,9 @@
 
 namespace ZendBaseModel\Form\View\Helper;
 
-use ZendBaseModel\Form\Element;
-use Zend\Form\View\Helper\FormElement as BaseFormElementView;
 use Zend\Form\ElementInterface;
+use Zend\Form\View\Helper\FormElement as BaseFormElementView;
+use ZendBaseModel\Form\Element;
 
 /**
  * Description of FormElement

@@ -40,7 +40,7 @@ abstract class BaseEnum
     /**
      * is there constant with name
      *
-     * @param string  $name
+     * @param string $name
      * @param boolean $strict
      * @return boolean
      */

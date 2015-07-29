@@ -2,10 +2,9 @@
 
 namespace ZendBaseModel\Controller\Console;
 
-use Zend\Mvc\Controller\AbstractActionController,
-    Zend\Console\Request as ConsoleRequest;
+use Zend\Console\Request as ConsoleRequest;
+use Zend\Mvc\Controller\AbstractActionController;
 use ZendBaseModel\Doctrine\EntityManagerAwareInterface;
-use ZendBaseModel\Controller\Console\ConsoleToolInterface;
 use ZendPsrLogger\LoggerInterface;
 use ZendPsrLogger\NullLogger;
 
