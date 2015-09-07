@@ -17,6 +17,10 @@
     "doctrine/doctrine-orm-module": "~0.8",
     "doctrine/doctrine-module": "*"
   },
+  "require-dev": {
+    "zendframework/zend-developer-tools": "dev-master",
+    "bjyoungblood/bjy-profiler": "dev-master"
+  },
   "repositories": [
     {
       "type": "composer",
