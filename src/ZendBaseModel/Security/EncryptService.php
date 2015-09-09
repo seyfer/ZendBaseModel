@@ -2,7 +2,6 @@
 
 namespace ZendBaseModel\Security;
 
-use Zend\Crypt\Exception\InvalidArgumentException;
 use Zend\Crypt\Symmetric\Mcrypt;
 
 /**
@@ -161,46 +160,14 @@ class EncryptService extends Mcrypt implements EncryptInterface
     }
 
     /**
-     * @param string $salt
-     * @return void|Mcrypt
-     */
-    public function setSalt($salt)
-    {
-        return parent::setSalt($salt);
-    }
-
-    /**
      * @param string $data
      * @return string
      */
     public function encrypt($data)
     {
-        if (empty($data)) {
-            throw new InvalidArgumentException('The data to encrypt cannot be empty');
-        }
-        if (null === $this->getKey()) {
-            throw new InvalidArgumentException('No key specified for the encryption');
-        }
-        if (null === $this->getSalt()) {
-            throw new InvalidArgumentException('The salt (IV) cannot be empty');
-        }
-        if (null === $this->getPadding()) {
-            throw new InvalidArgumentException('You have to specify a padding method');
-        }
+        $result = parent::encrypt($data);
 
-        //в чем соль
-        $iv = $this->getSalt();
-
-        // encryption
-        $result = mcrypt_encrypt(
-            $this->supportedAlgos[$this->algo],
-            $this->getKey(),
-            $data,
-            $this->supportedModes[$this->mode],
-            $iv
-        );
-
-        return base64_encode($iv . $result);
+        return base64_encode($result);
     }
 
     /**
