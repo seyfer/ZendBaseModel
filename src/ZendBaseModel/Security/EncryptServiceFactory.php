@@ -6,7 +6,7 @@
  * Time: 18:10
  */
 
-namespace Account\Core\Infrastructure\Security;
+namespace ZendBaseModel\Security;
 
 
 use Zend\ServiceManager\FactoryInterface;

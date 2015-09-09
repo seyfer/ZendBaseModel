@@ -1,6 +1,6 @@
 <?php
 
-namespace Account\Core\Infrastructure\Security;
+namespace ZendBaseModel\Security;
 
 use Zend\Crypt\Exception\InvalidArgumentException;
 use Zend\Crypt\Symmetric\Mcrypt;

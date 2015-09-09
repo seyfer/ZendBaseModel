@@ -6,7 +6,7 @@
  * Time: 12:53
  */
 
-namespace Account\Core\Infrastructure\Security;
+namespace ZendBaseModel\Security;
 
 /**
  * Interface EncryptInterface
