@@ -30,6 +30,57 @@ class Date extends \DateTime
     }
 
     /**
+     * @param \DateTimeInterface $a
+     * @param \DateTimeInterface $b
+     * @param bool $absolute Should the interval be forced to be positive?
+     * @param string $cap The greatest time unit to allow (H, M)
+     *
+     * @return \DateInterval The difference as a time only interval
+     */
+    function timeDiff(\DateTimeInterface $a, \DateTimeInterface $b, $absolute = false, $cap = 'H')
+    {
+
+        // Get unix timestamps, note getTimeStamp() is limited
+        $b_raw = intval($b->format("U"));
+        $a_raw = intval($a->format("U"));
+
+        // Initial Interval properties
+        $h      = 0;
+        $m      = 0;
+        $invert = 0;
+
+        // Is interval negative?
+        if (!$absolute && $b_raw < $a_raw) {
+            $invert = 1;
+        }
+
+        // Working diff, reduced as larger time units are calculated
+        $working = abs($b_raw - $a_raw);
+
+        // If capped at hours, calc and remove hours, cap at minutes
+        if ($cap == 'H') {
+            $h = intval($working / 3600);
+            $working -= $h * 3600;
+            $cap = 'M';
+        }
+
+        // If capped at minutes, calc and remove minutes
+        if ($cap == 'M') {
+            $m = intval($working / 60);
+            $working -= $m * 60;
+        }
+
+        // Seconds remain
+        $s = $working;
+
+        // Build interval and invert if necessary
+        $interval         = new \DateInterval('PT' . $h . 'H' . $m . 'M' . $s . 'S');
+        $interval->invert = $invert;
+
+        return $interval;
+    }
+
+    /**
      * @param string $format
      * @param int $time
      * @return bool|mixed|string
