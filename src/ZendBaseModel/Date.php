@@ -37,7 +37,7 @@ class Date extends \DateTime
      *
      * @return \DateInterval The difference as a time only interval
      */
-    function timeDiff(\DateTimeInterface $a, \DateTimeInterface $b, $absolute = false, $cap = 'H')
+    public static function timeDiff(\DateTimeInterface $a, \DateTimeInterface $b, $absolute = false, $cap = 'H')
     {
 
         // Get unix timestamps, note getTimeStamp() is limited
