@@ -1,0 +1,67 @@
+<?php
+echo $this->headScript()->appendScript(
+    'function confirmAction(text, confirmCallback, cancelCallback, hideCallback){
+    var $modal = $("#confirmationModal_' . $id . '");
+    if (text) {
+        $modal.find(\'.modal-body\').html(text);
+    }
+    if (confirmCallback) {
+        $modal.data(\'confirm\', confirmCallback);
+    }
+    if (cancelCallback) {
+        $modal.data(\'cancel\', cancelCallback);
+    }
+    if (hideCallback) {
+        $modal.data(\'hide\', hideCallback);
+    }
+    $modal.modal(\'show\')
+};
+
+$(document).ready(function(){
+    $(\'#confirm_' . $id . '\').on(\'click\', function(e){
+        var $modal = $("#confirmationModal_' . $id . '"),
+            callback = $modal.data(\'confirm\');
+        if(typeof callback === \'function\') {
+            callback($modal);
+        }
+    });
+    $(\'#cancel_' . $id . '\').on(\'click\', function(e){
+        var $modal = $("#confirmationModal_' . $id . '"),
+            callback = $modal.data(\'cancel\');
+        if(typeof callback === \'function\') {
+            callback($modal);
+        }
+    });
+    $("#confirmationModal_' . $id . '").on(\'hide\', function(e){
+        var $modal = $(e.currentTarget),
+            callback = $modal.data(\'hide\');
+        if(typeof callback === \'function\') {
+            callback($modal);
+        }
+        $modal
+            .data(\'hide\', null)
+            .data(\'confirm\', null)
+            .data(\'cancel\', null);
+    });
+});');
+?>
+
+<div id="confirmationModal_<?php echo $id ?>" class="modal fade bs-example-modal-static" tabindex="-1" role="dialog"
+     data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Confirm your action</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button id="confirm_<?php echo $id ?>" class="btn btn-primary" data-dismiss="modal"
+                        aria-hidden="true">Ok
+                </button>
+                <button id="cancel_<?php echo $id ?>" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
