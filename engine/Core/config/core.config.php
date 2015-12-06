@@ -1,4 +1,5 @@
 <?php
+//'config_static_paths' => ['./vendor/seyfer/zend-base-model/engine/Core/config/core.config.php']
 return [
     'doctrine'         => [
         'cache' => [
