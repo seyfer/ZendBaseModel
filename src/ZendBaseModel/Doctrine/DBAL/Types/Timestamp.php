@@ -1,5 +1,6 @@
 <?php
-namespace Core\DBAL\Types;
+
+namespace ZendBaseModel\Doctrine\DBAL\Types;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;

@@ -13,6 +13,13 @@ class Response
     protected $message;
     protected $additionalData;
 
+    /**
+     * Response constructor.
+     * @param $success
+     * @param null $result
+     * @param null $message
+     * @param null $additionalData
+     */
     public function __construct($success, $result = null, $message = null, $additionalData = null)
     {
         $this->success        = $success;
