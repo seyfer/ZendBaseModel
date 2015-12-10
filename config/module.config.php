@@ -23,16 +23,14 @@
 //                    ],
 //                ]
 //            ]
-//        ]
+//        ],
+//        'cache' => [
+//            'memcached' => [
+//                'instance' => 'core.cache.memcached',
+//            ],
+//        ],
 //    ],
 return [
-    'doctrine'         => [
-        'cache' => [
-            'memcached' => [
-                'instance' => 'core.cache.memcached',
-            ],
-        ],
-    ],
     'exceptionHandler' => [
         'routeMatch' => [
             'controller' => 'ZendBaseModel\Controller\Exception',
@@ -40,17 +38,17 @@ return [
         ]
     ],
     'listeners'        => [
-        'core.exception.exceptionListener' => 'core.exception.exceptionListener'
+        'ZendBaseModel.exception.exceptionListener' => 'ZendBaseModel.exception.exceptionListener'
     ],
     'service_manager'  => [
         'factories' => [
-            'core.cache.memcached'             => ZendBaseModel\Cache\MemcachedFactory::class,
-            'core.exception.exceptionListener' => Core\Exception\ExceptionFactory::class,
+            'ZendBaseModel.cache.memcached'             => ZendBaseModel\Cache\MemcachedFactory::class,
+            'ZendBaseModel.exception.exceptionListener' => ZendBaseModel\Exception\ExceptionFactory::class,
         ],
     ],
     'controllers'      => [
         'invokables' => [
-            'Core\Controller\Exception' => Core\Controller\ExceptionController::class,
+            'ZendBaseModel\Controller\Exception' => ZendBaseModel\Controller\ExceptionController::class,
         ]
     ],
     'log'              => [
@@ -64,6 +62,14 @@ return [
                     ]
                 ]
             ]
+        ],
+    ],
+    'view_manager'     => [
+        'display_not_found_reason' => true,
+        'display_exceptions'       => true,
+        'doctype'                  => 'HTML5',
+        'template_path_stack'      => [
+            __DIR__ . '/../view',
         ],
     ],
     'view_helpers'     => [
@@ -83,17 +89,5 @@ return [
             'routes' => [
             ]
         ]
-    ],
-    'controllers'      => [
-        'invokables' => [
-        ],
-    ],
-    'view_manager'     => [
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'template_path_stack'      => [
-            __DIR__ . '/../view',
-        ],
     ],
 ];

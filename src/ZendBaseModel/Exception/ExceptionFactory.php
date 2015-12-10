@@ -1,5 +1,5 @@
 <?php
-namespace Core\Exception;
+namespace ZendBaseModel\Exception;
 
 use Zend\Log\Logger;
 use Zend\ServiceManager\FactoryInterface;
@@ -7,7 +7,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class ExceptionFactory
- * @package Core\Exception
+ * @package ZendBaseModel\Exception
  */
 class ExceptionFactory implements FactoryInterface
 {

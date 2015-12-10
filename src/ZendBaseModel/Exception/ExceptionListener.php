@@ -1,7 +1,6 @@
 <?php
-namespace Core\Exception;
+namespace ZendBaseModel\Exception;
 
-use Core\Validation\ValidationException as ValidationException;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\EventManagerInterface;
 use Zend\Log\Logger;
@@ -9,6 +8,7 @@ use Zend\Mvc\Application as ZendApplication;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Stdlib\ResponseInterface as Response;
+use ZendBaseModel\Validation\ValidationException;
 
 /**
  * Class ExceptionListener
@@ -35,7 +35,6 @@ class ExceptionListener extends AbstractListenerAggregate
         $this->routeParams = $routeParams;
         $this->logger      = $logger;
     }
-
 
     public function attach(EventManagerInterface $events)
     {

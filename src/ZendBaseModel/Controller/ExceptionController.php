@@ -1,5 +1,5 @@
 <?php
-namespace Core\Controller;
+namespace ZendBaseModel\Controller;
 
 use Zend\Http\PhpEnvironment\Request;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -9,10 +9,14 @@ use Zend\View\Renderer\PhpRenderer;
 
 /**
  * Class ExceptionController
- * @package Core\Controller
+ * @package ZendBaseModel\Controller
  */
 class ExceptionController extends AbstractActionController
 {
+    /**
+     * @return null|JsonModel|ViewModel
+     * @throws \Exception
+     */
     public function indexAction()
     {
         /** @var Request $request */
@@ -22,7 +26,7 @@ class ExceptionController extends AbstractActionController
             $event = $this->getEvent();
             echo $event->getParam('message');
 
-            return;
+            return null;
         }
 
         if ($request->isXmlHttpRequest()) {
