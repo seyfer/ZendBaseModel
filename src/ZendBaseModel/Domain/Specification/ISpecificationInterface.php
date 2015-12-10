@@ -1,9 +1,9 @@
 <?php
-namespace Core\Domain\Specification;
+namespace ZendBaseModel\Domain\Specification;
 
 /**
  * Interface ISpecificationInterface
- * @package Core\Domain\Specification
+ * @package ZendBaseModel\Domain\Specification
  */
 interface ISpecificationInterface
 {

@@ -1,11 +1,11 @@
 <?php
-namespace Core\Domain\Specification;
+namespace ZendBaseModel\Domain\Specification;
 
 /**
- * Class OrSpecification
- * @package Core\Domain\Specification
+ * Class CompositeSpecification
+ * @package ZendBaseModel\Domain\Specification
  */
-class OrSpecification extends CompositeSpecification
+class AndSpecification extends CompositeSpecification
 {
     /**
      * @var ISpecificationInterface
@@ -27,12 +27,8 @@ class OrSpecification extends CompositeSpecification
         $this->second = $second;
     }
 
-    /**
-     * @param $candidate
-     * @return bool
-     */
     public function isSatisfiedBy($candidate)
     {
-        return $this->first->isSatisfiedBy($candidate) || $this->second->isSatisfiedBy($candidate);
+        return $this->first->isSatisfiedBy($candidate) && $this->second->isSatisfiedBy($candidate);
     }
 }

@@ -1,9 +1,9 @@
 <?php
-namespace Core\Domain\Specification;
+namespace ZendBaseModel\Domain\Specification;
 
 /**
  * Class OrSpecification
- * @package Core\Domain\Specification
+ * @package ZendBaseModel\Domain\Specification
  */
 class NotSpecification extends CompositeSpecification
 {

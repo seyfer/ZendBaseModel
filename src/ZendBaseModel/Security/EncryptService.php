@@ -6,7 +6,7 @@ use Zend\Crypt\Symmetric\Mcrypt;
 
 /**
  * Class Encrypt
- * @package Account\Core\Infrastructure\Security
+ * @package ZendBaseModel\Security
  */
 class EncryptService extends Mcrypt implements EncryptInterface
 {

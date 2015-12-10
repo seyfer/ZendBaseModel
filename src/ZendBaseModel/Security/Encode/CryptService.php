@@ -1,9 +1,9 @@
 <?php
-namespace Core\Encode;
+namespace ZendBaseModel\Security\Encode;
 
 /**
  * Class CryptService
- * @package Tour\Infrastructure\Encode
+ * @package ZendBaseModel\Security\Encode
  */
 class CryptService
 {
@@ -27,7 +27,6 @@ class CryptService
         $this->salt       = isset($options['salt']) ? $options['salt'] : self::ENCRYPT_SALT;
     }
 
-
     /**
      * @param $sourceString
      * @return string
@@ -39,6 +38,12 @@ class CryptService
         return base64_encode($encrypted);
     }
 
+    /**
+     * @param $string
+     * @param $sequence
+     * @param $salt
+     * @return int
+     */
     protected function doCrypt($string, $sequence, $salt)
     {
         $strLen = strlen($string);

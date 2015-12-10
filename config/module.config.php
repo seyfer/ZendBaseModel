@@ -1,6 +1,5 @@
 <?php
 
-return [
 //    'doctrine'      => [
 //        'driver'     => [
 //            'model_entries' => [
@@ -26,23 +25,70 @@ return [
 //            ]
 //        ]
 //    ],
-    'module_config' => [
+return [
+    'doctrine'         => [
+        'cache' => [
+            'memcached' => [
+                'instance' => 'core.cache.memcached',
+            ],
+        ],
     ],
-    'router'        => [
+    'exceptionHandler' => [
+        'routeMatch' => [
+            'controller' => 'ZendBaseModel\Controller\Exception',
+            'action'     => 'index'
+        ]
+    ],
+    'listeners'        => [
+        'core.exception.exceptionListener' => 'core.exception.exceptionListener'
+    ],
+    'service_manager'  => [
+        'factories' => [
+            'core.cache.memcached'             => ZendBaseModel\Cache\MemcachedFactory::class,
+            'core.exception.exceptionListener' => Core\Exception\ExceptionFactory::class,
+        ],
+    ],
+    'controllers'      => [
+        'invokables' => [
+            'Core\Controller\Exception' => Core\Controller\ExceptionController::class,
+        ]
+    ],
+    'log'              => [
+        'logger.exceptions' => [
+            'writers' => [
+                [
+                    'name'    => 'Stream',
+                    'options' => [
+                        'stream'        => 'data/logs/exception.log',
+                        'log_separator' => PHP_EOL . PHP_EOL
+                    ]
+                ]
+            ]
+        ],
+    ],
+    'view_helpers'     => [
+        'invokables' => [
+            'modalConfirmation' => 'ZendBaseModel\View\Helper\ModalConfirmation\Helper',
+            'modalAlert'        => 'ZendBaseModel\View\Helper\ModalAlert\Helper',
+        ],
+    ],
+    'module_config'    => [
+    ],
+    'router'           => [
         'routes' => [
         ],
     ],
-    'console'       => [
+    'console'          => [
         'router' => [
             'routes' => [
             ]
         ]
     ],
-    'controllers'   => [
+    'controllers'      => [
         'invokables' => [
         ],
     ],
-    'view_manager'  => [
+    'view_manager'     => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
         'doctype'                  => 'HTML5',

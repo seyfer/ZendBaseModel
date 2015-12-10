@@ -1,9 +1,9 @@
 <?php
-namespace Core\Validation;
+namespace ZendBaseModel\Validation;
 
 /**
  * Class Exception
- * @package Core\Validation
+ * @package ZendBaseModel\Validation
  */
 class ValidationException extends \Exception
 {

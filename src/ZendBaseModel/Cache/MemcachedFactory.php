@@ -1,16 +1,20 @@
 <?php
-namespace Core\Cache;
+namespace ZendBaseModel\Cache;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class MemcachedFactory
- * @package Core\Cache
+ * @package ZendBaseModel\Cache
  */
 class MemcachedFactory implements FactoryInterface
 {
 
+    /**
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return \Memcached
+     */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config           = $serviceLocator->get('Config');

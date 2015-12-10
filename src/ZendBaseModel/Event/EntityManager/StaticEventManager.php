@@ -6,12 +6,15 @@
  * Time: 22:26
  */
 
-namespace Core\Event\EntityManager;
-
+namespace ZendBaseModel\Event\EntityManager;
 
 use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerInterface;
 
+/**
+ * Class StaticEventManager
+ * @package ZendBaseModel\Event\EntityManager
+ */
 class StaticEventManager extends EventManager
 {
     /**

@@ -1,10 +1,14 @@
 <?php
-namespace Core\View\Helper\ModalAlert;
+namespace ZendBaseModel\View\Helper\ModalAlert;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Resolver\TemplateMapResolver;
 
+/**
+ * Class Helper
+ * @package ZendBaseModel\View\Helper\ModalAlert
+ */
 class Helper extends AbstractHelper
 {
     /**

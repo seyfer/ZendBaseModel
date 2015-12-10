@@ -1,11 +1,14 @@
 <?php
-namespace Core\View\Helper\ModalConfirmation;
-
+namespace ZendBaseModel\View\Helper\ModalConfirmation;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Resolver\TemplateMapResolver;
 
+/**
+ * Class Helper
+ * @package ZendBaseModel\View\Helper\ModalConfirmation
+ */
 class Helper extends AbstractHelper
 {
     /**

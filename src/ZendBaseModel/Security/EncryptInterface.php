@@ -10,7 +10,7 @@ namespace ZendBaseModel\Security;
 
 /**
  * Interface EncryptInterface
- * @package Account\Core\Infrastructure\Security
+ * @package ZendBaseModel\Security
  */
 interface EncryptInterface
 {

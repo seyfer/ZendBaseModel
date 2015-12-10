@@ -1,9 +1,9 @@
 <?php
-namespace Core\Domain\Specification;
+namespace ZendBaseModel\Domain\Specification;
 
 /**
  * Class CompositeSpecification
- * @package Core\Domain\Specification
+ * @package ZendBaseModel\Domain\Specification
  */
 abstract class CompositeSpecification implements ISpecificationInterface
 {

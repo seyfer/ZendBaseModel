@@ -1,9 +1,9 @@
 <?php
-namespace Core\Crypt;
+namespace ZendBaseModel\Security\Crypt;
 
 /**
  * Class CryptInterface
- * @package Core\Crypt
+ * @package ZendBaseModel\Security\Crypt
  */
 interface ICryptInterface
 {
@@ -13,7 +13,6 @@ interface ICryptInterface
      * @return mixed
      */
     public function encode($source);
-
 
     /**
      * Decode encoded before data

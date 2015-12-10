@@ -1,16 +1,15 @@
 <?php
-namespace Core\Crypt;
+namespace ZendBaseModel\Security\Crypt;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Class SimpleFactory
- * @package Core\Crypt
+ * @package ZendBaseModel\Security\Crypt
  */
 class SimpleFactory implements FactoryInterface
 {
-
     /**
      * @param ServiceLocatorInterface $serviceLocator
      * @return Simple|mixed

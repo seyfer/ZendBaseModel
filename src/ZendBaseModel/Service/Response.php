@@ -1,9 +1,9 @@
 <?php
-namespace Core\Service;
+namespace ZendBaseModel\Service;
 
 /**
  * Class Response
- * @package Core\Service
+ * @package ZendBaseModel\Service
  */
 class Response
 {

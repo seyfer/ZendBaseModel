@@ -1,9 +1,9 @@
 <?php
-namespace Core\Crypt;
+namespace ZendBaseModel\Security\Crypt;
 
 /**
  * Class Simple
- * @package Core\Crypt
+ * @package ZendBaseModel\Security\Crypt
  */
 class Simple implements ICryptInterface
 {
@@ -27,7 +27,6 @@ class Simple implements ICryptInterface
         $this->salt       = isset($options['salt']) ? $options['salt'] : self::ENCRYPT_SALT;
     }
 
-
     /**
      * Encode data
      * @param array|object $source
@@ -43,6 +42,12 @@ class Simple implements ICryptInterface
         return base64_encode($encrypted);
     }
 
+    /**
+     * @param $string
+     * @param $sequence
+     * @param $salt
+     * @return int
+     */
     protected function doCrypt($string, $sequence, $salt)
     {
         $strLen = strlen($string);
