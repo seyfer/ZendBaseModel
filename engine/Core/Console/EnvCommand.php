@@ -14,9 +14,12 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use ZendBaseModel\Debug;
 use ZendMover\Copier;
 
+/**
+ * Class EnvCommand
+ * @package Core\Console
+ */
 class EnvCommand extends Command
 {
     protected function configure()
@@ -30,6 +33,11 @@ class EnvCommand extends Command
              ->addOption('dbname', 'd', InputOption::VALUE_OPTIONAL, 'DB name');
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return string
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 //        Debug::vars($input->getArguments(), $input->getOptions());

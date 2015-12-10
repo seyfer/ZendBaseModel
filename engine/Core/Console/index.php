@@ -6,8 +6,9 @@
  * Time: 4:13 PM
  */
 define('APPLICATION_DIR', dirname(__DIR__ . '/../../../../'));
-date_default_timezone_set('America/Amsterdam');
-require APPLICATION_DIR . '/vendor/autoload.php';
+date_default_timezone_set('Europe/Amsterdam');
+
+//require APPLICATION_DIR . '/vendor/autoload.php';
 
 if (file_exists(APPLICATION_DIR . '/config/development.config.php')) {
 

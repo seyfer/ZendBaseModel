@@ -12,8 +12,15 @@ use Core\Tool\Environment;
 use Zend\Mvc\Controller\AbstractActionController;
 use ZendMover\Copier;
 
+/**
+ * Class EnvController
+ * @package Core\Controller
+ */
 class EnvController extends AbstractActionController
 {
+    /**
+     * @return string
+     */
     public function installAction()
     {
         $env = $this->getRequest()->getParam('env');

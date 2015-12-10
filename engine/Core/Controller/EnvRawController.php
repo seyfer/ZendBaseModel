@@ -14,6 +14,10 @@ use Zend\Mvc\Controller\AbstractController;
 use Zend\Mvc\MvcEvent;
 use ZendMover\Copier;
 
+/**
+ * Class EnvRawController
+ * @package Core\Controller
+ */
 class EnvRawController extends AbstractController
 {
 
