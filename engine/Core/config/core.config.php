@@ -1,5 +1,4 @@
 <?php
-//'config_static_paths' => ['./vendor/seyfer/zend-base-model/engine/Core/config/core.config.php']
 return [
     'doctrine'         => [
         'cache' => [
@@ -18,7 +17,7 @@ return [
         'core.exception.exceptionListener' => 'core.exception.exceptionListener'
     ],
     'service_manager'  => [
-        'factories'          => [
+        'factories' => [
             'core.cache.memcached'                => Core\Cache\MemcachedFactory::class,
             'core.tool.compositeschema'           => Core\Tool\CompositeSchemaFactory::class,
             'core.crypt.simple'                   => Core\Crypt\SimpleFactory::class,
@@ -26,14 +25,10 @@ return [
             'core.queue.queueService'             => Core\Queue\QueueFactory::class,
             'core.mandrill.mandrillSenderService' => Core\Mandrill\Factory::class,
         ],
-        'abstract_factories' => [
-            'Zend\\Log\\LoggerAbstractServiceFactory',
-        ]
     ],
     'controllers'      => [
         'invokables' => [
             'Core\Controller\Schema'    => Core\Controller\SchemaController::class,
-            'Core\Controller\Env'       => Core\Controller\EnvController::class,
             'Core\Controller\Exception' => Core\Controller\ExceptionController::class,
         ]
     ],
@@ -50,17 +45,7 @@ return [
                             'action'     => 'generateDiff',
                         ]
                     ]
-                ],
-                'env'    => [
-                    'type'    => 'simple',
-                    'options' => [
-                        'route'    => 'env install <env> [--dbu=<dbu>] [--dbp=<dbp>] [--dbn=<dbn>]',
-                        'defaults' => [
-                            'controller' => 'Core\Controller\Env',
-                            'action'     => 'install',
-                        ]
-                    ]
-                ],
+                ]
             ]
         ]
     ],
@@ -75,15 +60,6 @@ return [
                     ]
                 ]
             ]
-        ],
-    ],
-    'view_manager'     => [
-        'doctype'             => 'HTML5',
-        'strategies'          => [
-            'ViewJsonStrategy'
-        ],
-        'template_path_stack' => [
-            APPLICATION_DIR . "/view/"
         ],
     ],
     'view_helpers'     => [
