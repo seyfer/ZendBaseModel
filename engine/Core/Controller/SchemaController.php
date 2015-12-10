@@ -10,6 +10,9 @@ use Zend\Mvc\Controller\AbstractActionController;
  */
 class SchemaController extends AbstractActionController
 {
+    /**
+     * @return string
+     */
     public function generateDiffAction()
     {
         $withDrop = (bool)$this->getRequest()->getParam('withDrop', false);
@@ -23,7 +26,7 @@ class SchemaController extends AbstractActionController
         } else {
             $output .= ";";
 
-            $dir        = __DIR__ . "/../../../data/sql";
+            $dir        = __DIR__ . "/../../../../../../data/sql";
             $dateString = (new \DateTime())->format("Y-m-d.h-i-s");
             $file       = $dateString . ".sql";
             $filePath   = $dir . DIRECTORY_SEPARATOR . $file;
