@@ -1,0 +1,43 @@
+<?php $this->layout('layout/empty'); ?>
+<?php $this->headTitle("500"); ?>
+
+<body class="gray-bg">
+
+<?php if (defined("DEVELOPMENT_MODE")) : ?>
+    <div class="<?php echo(DEVELOPMENT_MODE == true ? '' : 'middle-box'); ?>
+ text-center animated fadeInDown">
+        <h1>500</h1>
+
+        <h3 class="font-bold">Internal server error</h3>
+
+        <div class="error-desc">
+            Something happened, try again later.
+
+            <?php if (DEVELOPMENT_MODE) : ?>
+                <h1>DEVELOPMENT_MODE</h1>
+                <div class="row" style="min-width: 800px;">
+                    <div class="col-md-12">
+                    <pre>
+                        <?php echo $exception; ?>
+                        <?php echo $message; ?>
+                    </pre>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php else : ?>
+
+    <div class="text-center animated fadeInDown">
+        <h1>500</h1>
+
+        <h3 class="font-bold">Internal server error</h3>
+
+        <div class="error-desc">
+            Something happened, try again later.
+        </div>
+    </div>
+
+<?php endif; ?>
+
+

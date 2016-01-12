@@ -45,8 +45,11 @@ class ExceptionController extends AbstractActionController
 
         /** @var PhpRenderer $viewRender */
         $viewRender = $this->getServiceLocator()->get('ViewRenderer');
-        $model      = new ViewModel(['message' => $event->getParam('message'), 'exception' => $event->getParam('exception')]);
-        $model->setTemplate("error");
+        $model      = new ViewModel([
+                                        'message'   => $event->getParam('message'),
+                                        'exception' => $event->getParam('exception')
+                                    ]);
+        $model->setTemplate("error/error");
 
         $layoutModel = new ViewModel(['content' => $viewRender->render($model)]);
         $layoutModel->setTemplate("layout/empty");
