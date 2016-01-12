@@ -38,7 +38,7 @@ return [
         ]
     ],
     'listeners'        => [
-        'ZendBaseModel.exception.exceptionListener' => 'ZendBaseModel.exception.exceptionListener'
+        'ZendBaseModel.exceptionListener' => 'ZendBaseModel.exception.exceptionListener'
     ],
     'service_manager'  => [
         'factories' => [
