@@ -27,15 +27,26 @@ class ExceptionListener extends AbstractListenerAggregate
     protected $logger;
 
     /**
+     * @var boolean
+     */
+    protected $stopPropagation;
+
+    /**
      * @param array $routeParams
      * @param Logger $logger
+     * @param bool $stopPropagation
      */
-    public function __construct(array $routeParams, Logger $logger)
+    public function __construct(array $routeParams, Logger $logger, $stopPropagation = true)
     {
-        $this->routeParams = $routeParams;
-        $this->logger      = $logger;
+        $this->routeParams     = $routeParams;
+        $this->logger          = $logger;
+        $this->stopPropagation = $stopPropagation;
+
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attach(EventManagerInterface $events)
     {
         $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH_ERROR, [$this, 'handleException']);
@@ -101,7 +112,7 @@ class ExceptionListener extends AbstractListenerAggregate
                     return true;
                 }
 
-                $e->stopPropagation(true);
+                $e->stopPropagation($this->stopPropagation);
                 $e->setViewModel($responses->last());
 
                 return $responses->last();

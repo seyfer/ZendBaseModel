@@ -32,13 +32,12 @@
 //    ],
 return [
     'exceptionHandler' => [
-        'routeMatch' => [
+        'routeMatch'      => [
             'controller' => 'ZendBaseModel\Controller\Exception',
             'action'     => 'index'
-        ]
-    ],
-    'listeners'        => [
-        'ZendBaseModel.exceptionListener' => 'ZendBaseModel.exception.exceptionListener'
+        ],
+        //set this to false to allow other handlers handle exception
+        'stopPropagation' => true,
     ],
     'service_manager'  => [
         'factories' => [

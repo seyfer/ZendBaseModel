@@ -18,13 +18,14 @@ class ExceptionFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocatorInterface)
     {
-        $config      = $serviceLocatorInterface->get('Config');
-        $routeParams = $config['exceptionHandler']['routeMatch'];
+        $config          = $serviceLocatorInterface->get('Config');
+        $routeParams     = $config['exceptionHandler']['routeMatch'];
+        $stopPropagation = $config['exceptionHandler']['stopPropagation'];
 
         /** @var Logger $logger */
         $logger = $serviceLocatorInterface->get('logger.exceptions');
 
-        return new ExceptionListener($routeParams, $logger);
+        return new ExceptionListener($routeParams, $logger, $stopPropagation);
     }
 
 }

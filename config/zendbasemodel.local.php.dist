@@ -1,0 +1,13 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: seyfer
+ * Date: 2/8/16
+ */
+
+return [
+    'exceptionHandler' => [
+        //set this to false to allow other handlers handle exception
+        'stopPropagation' => true,
+    ],
+];
