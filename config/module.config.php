@@ -31,6 +31,9 @@
 //        ],
 //    ],
 return [
+    'listeners'        => [
+        'ZendBaseModel.exceptionListener' => 'ZendBaseModel.exception.exceptionListener'
+    ],
     'exceptionHandler' => [
         'routeMatch'      => [
             'controller' => 'ZendBaseModel\Controller\Exception',
