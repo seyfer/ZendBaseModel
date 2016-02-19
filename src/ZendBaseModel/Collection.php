@@ -14,21 +14,21 @@ class Collection implements
     /**
      * main container
      *
-     * @var type
+     * @var array
      */
     protected $container;
 
     /**
      * class for collection item
      *
-     * @var type
+     * @var \stdClass
      */
     protected $itemPrototype;
 
     /**
      * container as it is
      *
-     * @var type
+     * @var array
      */
     protected $initialContainer;
 
@@ -50,7 +50,7 @@ class Collection implements
     /**
      * get raw data
      *
-     * @return type
+     * @return array
      */
     public function getInitialContainer()
     {
@@ -69,7 +69,7 @@ class Collection implements
     }
 
     /**
-     * @return type
+     * @return array
      */
     public function getArrayCopy()
     {
@@ -183,7 +183,7 @@ class Collection implements
     }
 
     /**
-     * @param callable $block
+     * @param callable|\Closure $block
      */
     public function each(\Closure $block)
     {
@@ -202,27 +202,35 @@ class Collection implements
 
     /**
      *
-     * @param type $id
-     * @return Contractor
+     * @param integer $id
+     * @return mixed
      */
     public function findById($id)
     {
         if (!$this->container || !$id) {
-            return;
+            return null;
         }
 
         foreach ($this->container as $each) {
 
-            if ($each->getId() == $id) {
-                return $each;
+            if (is_object($each)) {
+                if ($each->getId() == $id) {
+                    return $each;
+                }
+            }
+
+            if (is_array($each)) {
+                if ($each['id'] == $id) {
+                    return $each;
+                }
             }
         }
+
+        return null;
     }
 
     /**
-     * обратно в массив
-     *
-     * @return \SED\Model\Collection\Contractors
+     * @return $this
      */
     public function toArray()
     {
@@ -238,40 +246,44 @@ class Collection implements
     }
 
     /**
-     * как заполнить прототип
      *
      * @return $this
      * @throws \Exception
      */
     public function toPrototype()
     {
-        if (!$this->itemPrototype) {
-            throw new \Exception(__METHOD__ . " set prototype class first");
-        }
-
-        foreach ($this as $key => $value) {
-
-            if (!class_exists($this->itemPrototype)) {
-                throw new \RuntimeException(__METHOD__ . " class " .
-                                            $this->itemPrototype . "doesn't exist");
-            }
-
-            $contractor = new $this->itemPrototype();
-
-            if (is_string($value)) {
-                $contractor->setId($key);
-                $contractor->setName($value);
-            } else if (is_array($value) && isset($value['id'])) {
-                $contractor->setId($value['id']);
-                $contractor->setName($value['name']);
-            } else {
-                throw new \Exception(__METHOD__ . " wrong format");
-            }
-
-            $this[$key] = $contractor;
-        }
-
-        return $this;
     }
+
+    //how to implement toPrototype example
+//    public function toPrototype()
+//    {
+//        if (!$this->itemPrototype) {
+//            throw new \Exception(__METHOD__ . " set prototype class first");
+//        }
+//
+//        foreach ($this as $key => $value) {
+//
+//            if (!class_exists($this->itemPrototype)) {
+//                throw new \RuntimeException(__METHOD__ . " class " .
+//                                            $this->itemPrototype . "doesn't exist");
+//            }
+//
+//            $contractor = new $this->itemPrototype();
+//
+//            if (is_string($value)) {
+//                $contractor->setId($key);
+//                $contractor->setName($value);
+//            } else if (is_array($value) && isset($value['id'])) {
+//                $contractor->setId($value['id']);
+//                $contractor->setName($value['name']);
+//            } else {
+//                throw new \Exception(__METHOD__ . " wrong format");
+//            }
+//
+//            $this[$key] = $contractor;
+//        }
+//
+//        return $this;
+//    }
 
 }
