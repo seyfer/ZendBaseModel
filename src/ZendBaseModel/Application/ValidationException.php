@@ -1,5 +1,5 @@
 <?php
-namespace ZendBaseModel\Infrastructure\Validation;
+namespace ZendBaseModel\Application;
 
 /**
  * Class Exception

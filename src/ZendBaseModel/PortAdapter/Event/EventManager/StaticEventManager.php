@@ -6,7 +6,7 @@
  * Time: 22:26
  */
 
-namespace ZendBaseModel\PortAdapter\Event\EntityManager;
+namespace ZendBaseModel\PortAdapter\Event\EventManager;
 
 use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerInterface;

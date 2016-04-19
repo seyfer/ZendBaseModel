@@ -9,7 +9,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Stdlib\ResponseInterface as Response;
 use Zend\View\Model\ModelInterface;
-use ZendBaseModel\Infrastructure\Validation\ValidationException;
+use ZendBaseModel\Application\ValidationException;
 
 /**
  * Class ExceptionListener
