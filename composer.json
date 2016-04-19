@@ -1,6 +1,5 @@
 {
   "name": "seyfer/zend-base-model",
-  "version": "1.0",
   "description": "Base classes for ZF2 development",
   "homepage": "http://seyferseed.ru",
   "authors": [
