@@ -44,13 +44,13 @@ return [
     ],
     'service_manager'  => [
         'factories' => [
-            'ZendBaseModel.cache.memcached'             => ZendBaseModel\Cache\MemcachedFactory::class,
-            'ZendBaseModel.exception.exceptionListener' => ZendBaseModel\Exception\ExceptionFactory::class,
+            'ZendBaseModel.cache.memcached'             => \ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Cache\MemcachedFactory::class,
+            'ZendBaseModel.exception.exceptionListener' => \ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Exception\ExceptionFactory::class,
         ],
     ],
     'controllers'      => [
         'invokables' => [
-            'ZendBaseModel\Controller\Exception' => ZendBaseModel\Controller\ExceptionController::class,
+            'ZendBaseModel\Controller\Exception' => \ZendBaseModel\PortAdapter\Dispatch\Zend\Controller\UI\ExceptionController::class,
         ]
     ],
     'log'              => [
@@ -76,8 +76,8 @@ return [
     ],
     'view_helpers'     => [
         'invokables' => [
-            'modalConfirmation' => 'ZendBaseModel\View\Helper\ModalConfirmation\Helper',
-            'modalAlert'        => 'ZendBaseModel\View\Helper\ModalAlert\Helper',
+            'modalConfirmation' => \ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalConfirmation\Helper::class,
+            'modalAlert'        => \ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalAlert\Helper::class,
         ],
     ],
     'module_config'    => [

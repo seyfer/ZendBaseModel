@@ -8,14 +8,14 @@ namespace ZendBaseModel\Domain\Specification;
 class NotSpecification extends CompositeSpecification
 {
     /**
-     * @var ISpecificationInterface
+     * @var SpecificationInterface
      */
     private $first;
 
     /**
-     * @param ISpecificationInterface $first
+     * @param SpecificationInterface $first
      */
-    public function __construct(ISpecificationInterface $first)
+    public function __construct(SpecificationInterface $first)
     {
         $this->first = $first;
     }

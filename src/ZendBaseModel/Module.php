@@ -11,14 +11,26 @@
 namespace ZendBaseModel;
 
 use Zend\Console\Adapter\AdapterInterface as Console;
+use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ConsoleUsageProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use ZendBaseModel\PortAdapter\Dispatch\Zend\Form\View\Helper\FormDateTimePicker;
+use ZendBaseModel\PortAdapter\Dispatch\Zend\Form\View\Helper\FormElement;
 
+/**
+ * Class Module
+ * @package ZendBaseModel
+ */
 class Module implements
-    ConsoleUsageProviderInterface, ServiceProviderInterface, ViewHelperProviderInterface
+    ConfigProviderInterface,
+    AutoloaderProviderInterface,
+    ConsoleUsageProviderInterface,
+    ServiceProviderInterface,
+    ViewHelperProviderInterface
 {
 
     public function onBootstrap(MvcEvent $e)
@@ -28,11 +40,17 @@ class Module implements
         $moduleRouteListener->attach($eventManager);
     }
 
+    /**
+     * @return mixed
+     */
     public function getConfig()
     {
         return include __DIR__ . '/../../config/module.config.php';
     }
 
+    /**
+     * @return array
+     */
     public function getAutoloaderConfig()
     {
         return [
@@ -44,12 +62,19 @@ class Module implements
         ];
     }
 
+    /**
+     * @param Console $console
+     * @return array
+     */
     public function getConsoleUsage(Console $console)
     {
         return [
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getServiceConfig()
     {
         return [
@@ -59,12 +84,15 @@ class Module implements
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getViewHelperConfig()
     {
         return [
             'invokables' => [
-                '\Zend\Form\View\Helper\FormElement' => \ZendBaseModel\Form\View\Helper\FormElement::class,
-                'FormDateTimePicker'                 => \ZendBaseModel\Form\View\Helper\FormDateTimePicker::class,
+                '\Zend\Form\View\Helper\FormElement' => FormElement::class,
+                'FormDateTimePicker'                 => FormDateTimePicker::class,
             ],
         ];
     }

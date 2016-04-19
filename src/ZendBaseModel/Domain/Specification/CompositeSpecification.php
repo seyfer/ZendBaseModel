@@ -5,24 +5,24 @@ namespace ZendBaseModel\Domain\Specification;
  * Class CompositeSpecification
  * @package ZendBaseModel\Domain\Specification
  */
-abstract class CompositeSpecification implements ISpecificationInterface
+abstract class CompositeSpecification implements SpecificationInterface
 {
     abstract public function isSatisfiedBy($candidate);
 
     /**
-     * @param ISpecificationInterface $spec
+     * @param SpecificationInterface $spec
      * @return AndSpecification
      */
-    public function AndSpecification(ISpecificationInterface $spec)
+    public function AndSpecification(SpecificationInterface $spec)
     {
         return new AndSpecification($this, $spec);
     }
 
     /**
-     * @param ISpecificationInterface $spec
+     * @param SpecificationInterface $spec
      * @return OrSpecification
      */
-    public function OrSpecification(ISpecificationInterface $spec)
+    public function OrSpecification(SpecificationInterface $spec)
     {
         return new OrSpecification($this, $spec);
     }

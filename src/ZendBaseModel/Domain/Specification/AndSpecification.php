@@ -8,20 +8,20 @@ namespace ZendBaseModel\Domain\Specification;
 class AndSpecification extends CompositeSpecification
 {
     /**
-     * @var ISpecificationInterface
+     * @var SpecificationInterface
      */
     private $first;
 
     /**
-     * @var ISpecificationInterface
+     * @var SpecificationInterface
      */
     private $second;
 
     /**
-     * @param ISpecificationInterface $first
-     * @param ISpecificationInterface $second
+     * @param SpecificationInterface $first
+     * @param SpecificationInterface $second
      */
-    public function __construct(ISpecificationInterface $first, ISpecificationInterface $second)
+    public function __construct(SpecificationInterface $first, SpecificationInterface $second)
     {
         $this->first  = $first;
         $this->second = $second;
