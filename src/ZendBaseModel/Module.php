@@ -78,9 +78,9 @@ class Module implements
     public function getServiceConfig()
     {
         return [
-            'shared' => [
-                'doctrine.entitymanager.orm_default' => false
-            ],
+//            'shared' => [
+//                'doctrine.entitymanager.orm_default' => false
+//            ],
         ];
     }
 

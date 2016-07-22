@@ -12,10 +12,12 @@
   ],
   "require": {
     "php": ">=5.4",
-    "zendframework/zendframework": ">=2.3",
-    "doctrine/doctrine-orm-module": "~0.8",
-    "doctrine/doctrine-module": "*",
+    "zendframework/zendframework": "~2.5",
     "seyfer/zend-psr-logger": "dev-master"
+  },
+  "suggest": {
+    "doctrine/doctrine-orm-module": "~0.8",
+    "doctrine/doctrine-module": "*"
   },
   "require-dev": {
     "zendframework/zend-developer-tools": "dev-master",
