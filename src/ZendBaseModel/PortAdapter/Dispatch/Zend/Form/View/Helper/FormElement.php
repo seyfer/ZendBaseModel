@@ -4,7 +4,7 @@ namespace ZendBaseModel\PortAdapter\Dispatch\Zend\Form\View\Helper;
 
 use Zend\Form\ElementInterface;
 use Zend\Form\View\Helper\FormElement as BaseFormElementView;
-use ZendBaseModel\Form\Element;
+use ZendBaseModel\PortAdapter\Dispatch\Zend\Form\Element\DateTimePicker;
 
 /**
  * Description of FormElement
@@ -26,7 +26,7 @@ class FormElement extends BaseFormElementView
             return '';
         }
 
-        if ($element instanceof \ZendBaseModel\PortAdapter\Dispatch\Zend\Form\Element\DateTimePicker) {
+        if ($element instanceof DateTimePicker) {
             $helper = $renderer->plugin('FormDateTimePicker');
 
             return $helper($element);
