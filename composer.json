@@ -11,7 +11,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
+    "php": ">=5.5",
     "zendframework/zendframework": "~2.5",
     "seyfer/zend-psr-logger": "dev-master"
   },
@@ -31,8 +31,7 @@
   ],
   "autoload": {
     "psr-0": {
-      "ZendBaseModel\\": "src/",
-      "Core\\": "engine/"
+      "ZendBaseModel\\": "src/"
     }
   }
 }
