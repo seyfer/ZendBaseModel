@@ -30,13 +30,13 @@ class StatusSelect extends Select
     private function configure($options = [])
     {
         $optionsConfig = [
-            'label'                     => 'Статус',
-            'value_options'             => $options,
+            'label' => 'Статус',
+            'value_options' => $options,
             'disable_inarray_validator' => true,
-            "attributes"                => [
+            "attributes" => [
                 "value" => 0,
             ],
-            'empty_option'              => '---',
+            'empty_option' => '---',
         ];
 
         $this->setAttribute("id", self::NAME);
@@ -50,7 +50,7 @@ class StatusSelect extends Select
      */
     public function configureWithData()
     {
-        $options        = \ZendBaseModel\Domain\StatusEnum::getConstants();
+        $options = \ZendBaseModel\Domain\StatusEnum::getConstants();
         $optionsFlipped = array_flip($options);
 
         $this->configure($optionsFlipped);

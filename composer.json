@@ -1,37 +1,37 @@
 {
-  "name": "seyfer/zend-base-model",
-  "description": "Base classes for ZF2 development",
-  "homepage": "http://seyferseed.ru",
-  "authors": [
-    {
-      "name": "seyfer",
-      "email": "seyferseed@mail.ru",
-      "homepage": "http://seyferseed.ru",
-      "role": "Developer"
+    "name": "seyfer/zend-base-model",
+    "description": "Base classes for ZF2 development",
+    "homepage": "http://seyferseed.ru",
+    "authors": [
+        {
+            "name": "seyfer",
+            "email": "seyferseed@mail.ru",
+            "homepage": "http://seyferseed.ru",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zendframework": "~2.5.3",
+        "seyfer/zend-psr-logger": "dev-master"
+    },
+    "suggest": {
+        "doctrine/doctrine-orm-module": "~0.9.0",
+        "doctrine/doctrine-module": "~0.8.1"
+    },
+    "require-dev": {
+        "zendframework/zend-developer-tools": "dev-master",
+        "bjyoungblood/bjy-profiler": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.zendframework.com/"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "ZendBaseModel\\": "src/"
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.5",
-    "zendframework/zendframework": "~2.5",
-    "seyfer/zend-psr-logger": "dev-master"
-  },
-  "suggest": {
-    "doctrine/doctrine-orm-module": "~0.8",
-    "doctrine/doctrine-module": "*"
-  },
-  "require-dev": {
-    "zendframework/zend-developer-tools": "dev-master",
-    "bjyoungblood/bjy-profiler": "dev-master"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.zendframework.com/"
-    }
-  ],
-  "autoload": {
-    "psr-0": {
-      "ZendBaseModel\\": "src/"
-    }
-  }
 }

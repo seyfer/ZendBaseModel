@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\PortAdapter\Dispatch\Zend\Controller\UI;
 
 use Zend\Http\Request;
@@ -30,12 +31,12 @@ class ExceptionController extends AbstractActionController
         }
 
         if ($request->isXmlHttpRequest()) {
-            $event    = $this->getEvent();
-            $message  = $event->getParam('message');
+            $event = $this->getEvent();
+            $message = $event->getParam('message');
             $response = [
                 'success' => false,
-                'result'  => null,
-                'error'   => $message
+                'result' => null,
+                'error' => $message,
             ];
 
             return new JsonModel($response);
@@ -45,10 +46,10 @@ class ExceptionController extends AbstractActionController
 
         /** @var PhpRenderer $viewRender */
         $viewRender = $this->getServiceLocator()->get('ViewRenderer');
-        $model      = new ViewModel([
-                                        'message'   => $event->getParam('message'),
-                                        'exception' => $event->getParam('exception')
-                                    ]);
+        $model = new ViewModel([
+            'message' => $event->getParam('message'),
+            'exception' => $event->getParam('exception'),
+        ]);
         $model->setTemplate("error/error");
 
         $layoutModel = new ViewModel(['content' => $viewRender->render($model)]);

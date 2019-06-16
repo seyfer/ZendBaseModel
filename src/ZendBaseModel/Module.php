@@ -35,7 +35,7 @@ class Module implements
 
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
     }
@@ -89,7 +89,7 @@ class Module implements
         return [
             'invokables' => [
                 '\Zend\Form\View\Helper\FormElement' => FormElement::class,
-                'FormDateTimePicker'                 => FormDateTimePicker::class,
+                'FormDateTimePicker' => FormDateTimePicker::class,
             ],
         ];
     }

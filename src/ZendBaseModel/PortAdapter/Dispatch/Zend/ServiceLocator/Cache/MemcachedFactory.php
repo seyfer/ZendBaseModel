@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Cache;
 
 use Zend\ServiceManager\FactoryInterface;
@@ -17,7 +18,7 @@ class MemcachedFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $config           = $serviceLocator->get('Config');
+        $config = $serviceLocator->get('Config');
         $memcachedOptions = $config['memcached'];
 
         $memcached = new \Memcached();

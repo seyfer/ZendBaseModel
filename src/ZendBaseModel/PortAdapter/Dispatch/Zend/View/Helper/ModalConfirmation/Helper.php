@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalConfirmation;
 
 use Zend\View\Helper\AbstractHelper;
@@ -38,4 +39,4 @@ class Helper extends AbstractHelper
         return $helperRenderer->render('modalConfirmation', ['id' => self::$identifier]);
     }
 
-} 
+}

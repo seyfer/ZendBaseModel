@@ -4,6 +4,7 @@
  * User: seyfer
  * Date: 4/19/16
  */
+
 namespace ZendBaseModel\PortAdapter\Doctrine\Repository;
 
 use Doctrine\ORM\Query;

@@ -1,6 +1,7 @@
 <?php
 
 namespace ZendBaseModel\Domain;
+
 use ZendBaseModel\Domain\Enum\BaseEnum;
 
 /**

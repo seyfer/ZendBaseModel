@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\PortAdapter\Exception;
 
 use Zend\EventManager\AbstractListenerAggregate;
@@ -39,8 +40,8 @@ class ExceptionListener extends AbstractListenerAggregate
      */
     public function __construct(array $routeParams, Logger $logger, $stopPropagation = true)
     {
-        $this->routeParams     = $routeParams;
-        $this->logger          = $logger;
+        $this->routeParams = $routeParams;
+        $this->logger = $logger;
         $this->stopPropagation = $stopPropagation;
 
     }
@@ -79,7 +80,7 @@ class ExceptionListener extends AbstractListenerAggregate
             case ZendApplication::ERROR_EXCEPTION:
             default:
                 $application = $e->getApplication();
-                $routeMatch  = new RouteMatch($this->routeParams);
+                $routeMatch = new RouteMatch($this->routeParams);
 
                 /** @var \Exception $exception */
                 $exception = $e->getParam('exception');
@@ -93,13 +94,13 @@ class ExceptionListener extends AbstractListenerAggregate
                 //New MvcEvent assembling
                 $event = new MvcEvent(MvcEvent::EVENT_DISPATCH);
                 $event->setApplication($application)
-                      ->setRequest($e->getRequest())
-                      ->setResponse($e->getResponse())
-                      ->setRouter($e->getRouter())
-                      ->setError($e->getError())
-                      ->setRouteMatch($routeMatch)
-                      ->setParam('message', $message)
-                      ->setParam('exception', $e->getParam('exception'));
+                    ->setRequest($e->getRequest())
+                    ->setResponse($e->getResponse())
+                    ->setRouter($e->getRouter())
+                    ->setError($e->getError())
+                    ->setRouteMatch($routeMatch)
+                    ->setParam('message', $message)
+                    ->setParam('exception', $e->getParam('exception'));
 
 
                 // Trigger new dispatch MvcEvent till we get some Model from our ExceptionController

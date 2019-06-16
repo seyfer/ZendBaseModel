@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\Infrastructure\Security\Encode;
 
 /**
@@ -8,7 +9,7 @@ namespace ZendBaseModel\Infrastructure\Security\Encode;
 class CryptService implements CryptServiceInterface
 {
 
-    const ENCRYPT_KEY  = '';
+    const ENCRYPT_KEY = '';
     const ENCRYPT_SALT = '';
 
     /**
@@ -28,7 +29,7 @@ class CryptService implements CryptServiceInterface
     function __construct(array $options = [])
     {
         $this->encryptKey = isset($options['encryptKey']) ? $options['encryptKey'] : self::ENCRYPT_KEY;
-        $this->salt       = isset($options['salt']) ? $options['salt'] : self::ENCRYPT_SALT;
+        $this->salt = isset($options['salt']) ? $options['salt'] : self::ENCRYPT_SALT;
     }
 
     /**
@@ -51,7 +52,7 @@ class CryptService implements CryptServiceInterface
     protected function doCrypt($string, $sequence, $salt)
     {
         $strLen = strlen($string);
-        $gamma  = '';
+        $gamma = '';
         while (strlen($gamma) < $strLen) {
             $sequence = pack("H*", sha1($gamma . $sequence . $salt));
             $gamma .= substr($sequence, 0, 8);

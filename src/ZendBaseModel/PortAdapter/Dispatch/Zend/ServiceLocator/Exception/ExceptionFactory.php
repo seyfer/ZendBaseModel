@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Exception;
 
 use Zend\Log\Logger;
@@ -19,8 +20,8 @@ class ExceptionFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocatorInterface)
     {
-        $config          = $serviceLocatorInterface->get('Config');
-        $routeParams     = $config['exceptionHandler']['routeMatch'];
+        $config = $serviceLocatorInterface->get('Config');
+        $routeParams = $config['exceptionHandler']['routeMatch'];
         $stopPropagation = $config['exceptionHandler']['stopPropagation'];
 
         /** @var Logger $logger */

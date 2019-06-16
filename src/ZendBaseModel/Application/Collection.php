@@ -39,10 +39,10 @@ class Collection implements
     public function __construct($initial = [])
     {
         if (is_array($initial)) {
-            $this->container        = $initial;
+            $this->container = $initial;
             $this->initialContainer = $initial;
         } else if ($initial instanceof CollectionInterface) {
-            $this->container        = $initial->getArrayCopy();
+            $this->container = $initial->getArrayCopy();
             $this->initialContainer = $initial->getArrayCopy();
         }
     }
@@ -237,7 +237,7 @@ class Collection implements
         foreach ($this as $id => $value) {
 
             if (is_object($value)) {
-                $valueArr  = $value->getArrayCopy();
+                $valueArr = $value->getArrayCopy();
                 $this[$id] = $valueArr;
             }
         }

@@ -33,8 +33,8 @@ class SearchForm extends BaseForm
         $submit = new Element\Submit("submit");
         $submit->setValue("Применить");
         $submit->setAttributes([
-                                   "class" => "btn btn-default"
-                               ]);
+            "class" => "btn btn-default",
+        ]);
         $this->add($submit);
     }
 

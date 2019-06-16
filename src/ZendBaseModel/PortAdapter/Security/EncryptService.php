@@ -55,8 +55,8 @@ class EncryptService extends Mcrypt implements EncryptInterface
         $data = [
             //32 size is wrong!
             //            'key'  => $this->getKey(),
-            'key'  => $key,
-            'date' => time()
+            'key' => $key,
+            'date' => time(),
         ];
 
         $hash = $this->encrypt(serialize($data));
@@ -73,7 +73,7 @@ class EncryptService extends Mcrypt implements EncryptInterface
     {
         $this->setKeyFromConfigKey($configKey);
 
-        $decrypted    = $this->decrypt($sign);
+        $decrypted = $this->decrypt($sign);
         $unserialized = unserialize($decrypted);
 
         return $unserialized;

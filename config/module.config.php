@@ -1,65 +1,65 @@
 <?php
 
 return [
-    'listeners'        => [
-        'ZendBaseModel.exceptionListener' => 'ZendBaseModel.exception.exceptionListener'
+    'listeners' => [
+        'ZendBaseModel.exceptionListener' => 'ZendBaseModel.exception.exceptionListener',
     ],
     'exceptionHandler' => [
-        'routeMatch'      => [
+        'routeMatch' => [
             'controller' => 'ZendBaseModel\Controller\Exception',
-            'action'     => 'index'
+            'action' => 'index',
         ],
         //set this to false to allow other handlers handle exception
         'stopPropagation' => true,
     ],
-    'service_manager'  => [
+    'service_manager' => [
         'factories' => [
-            'ZendBaseModel.cache.memcached'             => \ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Cache\MemcachedFactory::class,
+            'ZendBaseModel.cache.memcached' => \ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Cache\MemcachedFactory::class,
             'ZendBaseModel.exception.exceptionListener' => \ZendBaseModel\PortAdapter\Dispatch\Zend\ServiceLocator\Exception\ExceptionFactory::class,
         ],
     ],
-    'controllers'      => [
+    'controllers' => [
         'invokables' => [
             'ZendBaseModel\Controller\Exception' => \ZendBaseModel\PortAdapter\Dispatch\Zend\Controller\UI\ExceptionController::class,
-        ]
+        ],
     ],
-    'log'              => [
+    'log' => [
         'logger.exceptions' => [
             'writers' => [
                 [
-                    'name'    => 'Stream',
+                    'name' => 'Stream',
                     'options' => [
-                        'stream'        => 'data/logs/exception.log',
-                        'log_separator' => PHP_EOL . PHP_EOL
-                    ]
-                ]
-            ]
+                        'stream' => 'data/logs/exception.log',
+                        'log_separator' => PHP_EOL . PHP_EOL,
+                    ],
+                ],
+            ],
         ],
     ],
-    'view_manager'     => [
+    'view_manager' => [
         'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'template_path_stack'      => [
+        'display_exceptions' => true,
+        'doctype' => 'HTML5',
+        'template_path_stack' => [
             __DIR__ . '/../view',
         ],
     ],
-    'view_helpers'     => [
+    'view_helpers' => [
         'invokables' => [
             'modalConfirmation' => \ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalConfirmation\Helper::class,
-            'modalAlert'        => \ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalAlert\Helper::class,
+            'modalAlert' => \ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalAlert\Helper::class,
         ],
     ],
-    'module_config'    => [
+    'module_config' => [
     ],
-    'router'           => [
+    'router' => [
         'routes' => [
         ],
     ],
-    'console'          => [
+    'console' => [
         'router' => [
             'routes' => [
-            ]
-        ]
+            ],
+        ],
     ],
 ];

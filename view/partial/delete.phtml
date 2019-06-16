@@ -5,14 +5,14 @@
 <?php
 $url = $this->url($route, [
     'controller' => $routeParams['controller'],
-    'action'     => 'delete',
-    'id'         => $this->id,
+    'action' => 'delete',
+    'id' => $this->id,
 ]);
 ?>
 <form action="<?php echo $url; ?>" method="post">
     <div>
-        <input type="hidden" name="id" value="<?php echo (int)$entity->getId(); ?>"/>
-        <input class="btn" type="submit" name="del" value="Yes"/>
-        <input class="btn" type="submit" name="del" value="No"/>
+        <input type="hidden" name="id" value="<?php echo (int)$entity->getId(); ?>" />
+        <input class="btn" type="submit" name="del" value="Yes" />
+        <input class="btn" type="submit" name="del" value="No" />
     </div>
 </form>

@@ -10,7 +10,7 @@ namespace ZendBaseModel\Application;
 class Date extends \DateTime implements DateInterface
 {
 
-    const STANDARD       = "Y-m-d H:i:s";
+    const STANDARD = "Y-m-d H:i:s";
     const STANDARD_SHORT = "Y-m-d";
 
     /**
@@ -45,8 +45,8 @@ class Date extends \DateTime implements DateInterface
         $a_raw = intval($a->format("U"));
 
         // Initial Interval properties
-        $h      = 0;
-        $m      = 0;
+        $h = 0;
+        $m = 0;
         $invert = 0;
 
         // Is interval negative?
@@ -74,7 +74,7 @@ class Date extends \DateTime implements DateInterface
         $s = $working;
 
         // Build interval and invert if necessary
-        $interval         = new \DateInterval('PT' . $h . 'H' . $m . 'M' . $s . 'S');
+        $interval = new \DateInterval('PT' . $h . 'H' . $m . 'M' . $s . 'S');
         $interval->invert = $invert;
 
         return $interval;
@@ -87,12 +87,12 @@ class Date extends \DateTime implements DateInterface
      */
     public static function dateRu($format = 'd.m.Y', $time = 0)
     {
-        $month = ['January'   => 'Январь', 'February' => 'Февраль',
-                  'March'     => 'Март', 'April' => 'Апрель',
-                  'May'       => 'Май', 'June' => 'Июнь',
-                  'July'      => 'Июль', 'August' => 'Август',
-                  'September' => 'Сентябрь', 'October' => 'Октябрь',
-                  'November'  => 'Ноябрь', 'December' => 'Декабрь'];
+        $month = ['January' => 'Январь', 'February' => 'Февраль',
+            'March' => 'Март', 'April' => 'Апрель',
+            'May' => 'Май', 'June' => 'Июнь',
+            'July' => 'Июль', 'August' => 'Август',
+            'September' => 'Сентябрь', 'October' => 'Октябрь',
+            'November' => 'Ноябрь', 'December' => 'Декабрь'];
 
         $res = date($format, $time);
 
@@ -118,13 +118,13 @@ class Date extends \DateTime implements DateInterface
 
         // mktime(hh, mm, ss, MM, DD, YYYY);
         $conv = ['ЯНВ' => '01', 'ФЕВ' => '02', 'МАР' => '03',
-                 'АПР' => '04', 'МАЙ' => '05', 'ИЮН' => '06',
-                 'ИЮЛ' => '07', 'АВГ' => '08', 'СЕН' => '09',
-                 'ОКТ' => '10', 'НОЯ' => '11', 'ДЕК' => '12',
-                 'JAN' => '01', 'FEB' => '02', 'MAR' => '03',
-                 'APR' => '04', 'MAY' => '05', 'JUN' => '06',
-                 'JUL' => '07', 'AUG' => '08', 'SEP' => '09',
-                 'OCT' => '10', 'NOV' => '11', 'DEC' => '12'];
+            'АПР' => '04', 'МАЙ' => '05', 'ИЮН' => '06',
+            'ИЮЛ' => '07', 'АВГ' => '08', 'СЕН' => '09',
+            'ОКТ' => '10', 'НОЯ' => '11', 'ДЕК' => '12',
+            'JAN' => '01', 'FEB' => '02', 'MAR' => '03',
+            'APR' => '04', 'MAY' => '05', 'JUN' => '06',
+            'JUL' => '07', 'AUG' => '08', 'SEP' => '09',
+            'OCT' => '10', 'NOV' => '11', 'DEC' => '12'];
 
         // YYMMDD
         // 110328
@@ -157,10 +157,10 @@ class Date extends \DateTime implements DateInterface
         // (hh:mm )dd.mm.yy(yy)( hh:mm)
         if (preg_match('/^((\d{2}):(\d{2})(\.000)? )?(\d{2})[\.\/](\d{2})[\.\/](\d{2,4})( (\d{2}):(\d{2})(\.000)?)?$/', $date, $match)) {
             $minutes = $match[3] ? $match[3] : $match[10];
-            $hours   = $match[2] ? $match[2] : $match[9];
-            $day     = $match[5];
-            $month   = $match[6];
-            $year    = $match[7] + ($match[7] < 100 ?
+            $hours = $match[2] ? $match[2] : $match[9];
+            $day = $match[5];
+            $month = $match[6];
+            $year = $match[7] + ($match[7] < 100 ?
                     ($match[7] > 25 ? 1900 : 2000) : 0);
 
             return mktime((int)$hours, (int)$minutes, 0, $month, $day, $year);
@@ -169,10 +169,10 @@ class Date extends \DateTime implements DateInterface
         // (hh:mm )yy(yy)-mm-dd( hh:mm:ss)
         if (preg_match('/^((\d{2}):(\d{2}(\.000)?) )?(\d{2,4})\-(\d{2})\-(\d{2})( (\d{2}):(\d{2}):(\d{2})(\.000)?)?$/', $date, $match)) {
             $minutes = $match[3] ? $match[3] : $match[10];
-            $hours   = $match[2] ? $match[2] : $match[9];
-            $day     = $match[7];
-            $month   = $match[6];
-            $year    = $match[5] + ($match[5] < 100 ?
+            $hours = $match[2] ? $match[2] : $match[9];
+            $day = $match[7];
+            $month = $match[6];
+            $year = $match[5] + ($match[5] < 100 ?
                     ($match[5] > 25 ? 1900 : 2000) : 0);
 
             return mktime((int)$hours, (int)$minutes, 0, $month, $day, $year);
@@ -211,17 +211,6 @@ class Date extends \DateTime implements DateInterface
                 mktime((float)$arr[2], (float)$arr[3], 0, $arr[5], $arr[4], $year) :
                 $year . '-' . $arr[5] . '-' . ($arr[4] < 10 ? '0' . (string)$arr[4] : $arr[4]);
         }
-
-        //        // 3/01/11 09:06 не сделано
-        //        // 3/01/11
-        //        if (preg_match('/(\d{1,2})[\.\/](\d{2})[\.\/](\d{2})( (\d{2}):(\d{2})){0,1}/', $date, $arr))
-        //        {
-        //
-        //            $year = $arr[3] <= date('y') ? $arr[3] + 2000 : $arr[3] + 1900;
-        //
-        //            return $timestamp ? mktime((float) $arr[4], (float) $arr[5], 0, $arr[5], $arr[4], $year) :
-        //                    $year . '-' . $arr[5] . '-' . ($arr[4] < 10 ? '0' . (string) $arr[4] : $arr[4]);
-        //        }
 
         // 10FEB2355, 31OCT87
         if (preg_match('/(\d{2})(\w{3})(\d{2})(\d{2})/', $date, $arr)) {
@@ -264,7 +253,7 @@ class Date extends \DateTime implements DateInterface
         if (preg_match('/(\d{2})(.*)(\d{2})/', $date, $arr)) {
 
             $arr[2] = iconv('utf8', 'cp1251', $arr[2]);
-            $year   = $arr[3] <= date('y') ? $arr[3] + 2000 : $arr[3] + 1900;
+            $year = $arr[3] <= date('y') ? $arr[3] + 2000 : $arr[3] + 1900;
 
             return $timestamp ? mktime(0, 0, 0, $conv[$arr[2]], $arr[1], $year) :
                 $year . '-' . $conv[$arr[2]] . '-' . $arr[1];
@@ -274,9 +263,7 @@ class Date extends \DateTime implements DateInterface
         if (preg_match('/(\d{2})(\w{3})/', $date, $arr)) {
 
             $year = date('Y');
-            $res  = mktime(0, 0, 0, $conv[$arr[2]], $arr[1], $year);
-            //                if ( $res < time() )
-            //                    $res = mktime(0,0,0,$conv[$arr[2]],$arr[1],$year+1);
+            $res = mktime(0, 0, 0, $conv[$arr[2]], $arr[1], $year);
             return $timestamp ? $res : $year . '-' . $conv[$arr[2]] . '-' . $arr[1];
         }
 

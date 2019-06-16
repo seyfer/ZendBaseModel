@@ -90,7 +90,7 @@ class BaseRepository extends EntityRepository implements BaseRepositoryInterface
 
         $this->queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $this->queryBuilder->select('e')
-                           ->from($this->getEntityName(), 'e');
+            ->from($this->getEntityName(), 'e');
 
         $this->queryBuilder->setMaxResults($limit);
 
@@ -108,7 +108,7 @@ class BaseRepository extends EntityRepository implements BaseRepositoryInterface
     {
         $this->queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $this->queryBuilder->select('COUNT(e.id) as entryCount')
-                           ->from($this->getEntityName(), 'e');
+            ->from($this->getEntityName(), 'e');
 
         $query = $this->queryBuilder->getQuery();
 
@@ -128,7 +128,7 @@ class BaseRepository extends EntityRepository implements BaseRepositoryInterface
 
         $this->queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $this->queryBuilder->select('DISTINCT e.id, COUNT(e.id) as entryCount')
-                           ->from($this->getEntityName(), 'e');
+            ->from($this->getEntityName(), 'e');
 
         $this->processSearchParams($params);
         $this->addOrder($orderBy);
@@ -151,7 +151,7 @@ class BaseRepository extends EntityRepository implements BaseRepositoryInterface
      */
     public function findWithPaginator($pageCount, $currentPage, $params = [], $orderBy = [])
     {
-        $query     = $this->getSearchQuery($params, $orderBy);
+        $query = $this->getSearchQuery($params, $orderBy);
         $paginator = $this->getPaginatedDoctrine($pageCount, $currentPage, $query);
 
         return $paginator;

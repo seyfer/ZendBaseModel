@@ -19,7 +19,7 @@ class ConstructedNavigationFactory extends ZendConstructedNavigationFactory
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $pages      = $this->getPages($serviceLocator);
+        $pages = $this->getPages($serviceLocator);
         $navigation = new Navigation($pages);
         $navigation->setTitle($this->getName());
 

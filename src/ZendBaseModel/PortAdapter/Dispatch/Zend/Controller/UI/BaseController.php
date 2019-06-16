@@ -110,7 +110,7 @@ abstract class BaseController extends AbstractActionController
     {
         if (null === $this->em) {
             $this->em = $this->getServiceLocator()
-                             ->get('Doctrine\ORM\EntityManager');
+                ->get('Doctrine\ORM\EntityManager');
         }
 
         return $this->em;
@@ -123,7 +123,7 @@ abstract class BaseController extends AbstractActionController
     protected function getViewHelper($helperName)
     {
         return $this->getServiceLocator()
-                    ->get('viewhelpermanager')->get($helperName);
+            ->get('viewhelpermanager')->get($helperName);
     }
 
 }

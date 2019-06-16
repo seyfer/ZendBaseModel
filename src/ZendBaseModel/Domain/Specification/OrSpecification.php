@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\Domain\Specification;
 
 /**
@@ -23,7 +24,7 @@ class OrSpecification extends CompositeSpecification
      */
     public function __construct(SpecificationInterface $first, SpecificationInterface $second)
     {
-        $this->first  = $first;
+        $this->first = $first;
         $this->second = $second;
     }
 

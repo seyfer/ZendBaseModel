@@ -64,7 +64,7 @@ abstract class BaseController extends AbstractActionController implements
     protected function getDryRunParam()
     {
         $request = $this->getRequest();
-        $param   = $request->getParam('dry-run');
+        $param = $request->getParam('dry-run');
 
         return $param;
     }
@@ -75,7 +75,7 @@ abstract class BaseController extends AbstractActionController implements
     protected function getNotMoveParam()
     {
         $request = $this->getRequest();
-        $param   = $request->getParam('not-move');
+        $param = $request->getParam('not-move');
 
         return $param;
     }
@@ -88,7 +88,7 @@ abstract class BaseController extends AbstractActionController implements
     protected function getNotSaveParam()
     {
         $request = $this->getRequest();
-        $param   = $request->getParam('not-save');
+        $param = $request->getParam('not-save');
 
         return $param;
     }
@@ -102,7 +102,7 @@ abstract class BaseController extends AbstractActionController implements
     protected function getCountParam()
     {
         $request = $this->getRequest();
-        $param   = $request->getParam('count');
+        $param = $request->getParam('count');
 
         if ($param && !is_numeric($param)) {
             throw new \RuntimeException("count must be numeric");
@@ -119,7 +119,7 @@ abstract class BaseController extends AbstractActionController implements
     protected function getDebugParam()
     {
         $request = $this->getRequest();
-        $param   = $request->getParam('debug');
+        $param = $request->getParam('debug');
 
         return $param;
     }
@@ -131,7 +131,7 @@ abstract class BaseController extends AbstractActionController implements
     {
         if (!$this->getEntityManager()->isOpen()) {
             $connection = $this->getEntityManager()->getConnection();
-            $config     = $this->getEntityManager()->getConfiguration();
+            $config = $this->getEntityManager()->getConfiguration();
 
             $this->em = $this->getEntityManager()->create(
                 $connection, $config
@@ -166,7 +166,7 @@ abstract class BaseController extends AbstractActionController implements
     public function getEntityManager()
     {
         $em = $this->getServiceLocator()
-                   ->get(EntityManager::class);
+            ->get(EntityManager::class);
 
         return $em;
     }

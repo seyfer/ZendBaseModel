@@ -24,18 +24,18 @@ class ZendDbAdapterFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $dbParams = $serviceLocator->get('Application')->getConfig()['dbParams'];
-        $modules  = $serviceLocator->get('ModuleManager')->getLoadedModules();
+        $modules = $serviceLocator->get('ModuleManager')->getLoadedModules();
 
         if (isset($modules['BjyProfiler'])) {
             $adapter = new \BjyProfiler\Db\Adapter\ProfilingAdapter([
-                                                                        'driver'   => $dbParams['driver'],
-                                                                        'dsn'      => 'mysql:dbname=' . $dbParams['database'] .
-                                                                                      ';host=' . $dbParams['hostname'],
-                                                                        'database' => $dbParams['database'],
-                                                                        'username' => $dbParams['username'],
-                                                                        'password' => $dbParams['password'],
-                                                                        'hostname' => $dbParams['hostname'],
-                                                                    ]);
+                'driver' => $dbParams['driver'],
+                'dsn' => 'mysql:dbname=' . $dbParams['database'] .
+                    ';host=' . $dbParams['hostname'],
+                'database' => $dbParams['database'],
+                'username' => $dbParams['username'],
+                'password' => $dbParams['password'],
+                'hostname' => $dbParams['hostname'],
+            ]);
 
             if (php_sapi_name() == 'cli') {
                 $logger = new \Zend\Log\Logger();

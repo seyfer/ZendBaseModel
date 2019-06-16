@@ -20,8 +20,8 @@ abstract class BaseEntityController extends BaseController
 
     const DEFAULT_PAGE_COUNT = 10;
 
-    protected $controllerRepository  = "";
-    protected $controllerRoute       = 'home/default';
+    protected $controllerRepository = "";
+    protected $controllerRoute = 'home/default';
     protected $controllerRouteParams = [];
 
     /**
@@ -73,7 +73,7 @@ abstract class BaseEntityController extends BaseController
 
         //init repository
         $this->currentRepository = $this->getEntityManager()
-                                        ->getRepository($this->getControllerRepository());
+            ->getRepository($this->getControllerRepository());
 
         $this->initForm();
         $this->initSearchForm();
@@ -132,7 +132,7 @@ abstract class BaseEntityController extends BaseController
      */
     public function indexAction()
     {
-        $request    = $this->getRequest();
+        $request = $this->getRequest();
         $this->page = (int)$this->params()->fromQuery('page');
 
         if ($request->isPost()) {
@@ -156,12 +156,12 @@ abstract class BaseEntityController extends BaseController
         }
 
         $view = new ViewModel([
-                                  'entries'     => $entries,
-                                  'session'     => $this->sessionContainer->post,
-                                  'form'        => $this->defaultSearchForm,
-                                  'route'       => $this->controllerRoute,
-                                  'routeParams' => $this->controllerRouteParams,
-                              ]);
+            'entries' => $entries,
+            'session' => $this->sessionContainer->post,
+            'form' => $this->defaultSearchForm,
+            'route' => $this->controllerRoute,
+            'routeParams' => $this->controllerRouteParams,
+        ]);
 
         if ($this->template) {
             $view->setTemplate($this->template);
@@ -185,7 +185,7 @@ abstract class BaseEntityController extends BaseController
 
             if ($this->defaultForm->isValid()) {
                 $className = $this->getControllerRepository();
-                $entity    = new $className();
+                $entity = new $className();
 
                 $validData = $this->defaultForm->getData();
 
@@ -206,8 +206,8 @@ abstract class BaseEntityController extends BaseController
         }
 
         return [
-            "form"        => $this->defaultForm,
-            'route'       => $this->controllerRoute,
+            "form" => $this->defaultForm,
+            'route' => $this->controllerRoute,
             'routeParams' => $this->controllerRouteParams,
         ];
     }
@@ -243,10 +243,10 @@ abstract class BaseEntityController extends BaseController
         }
 
         return [
-            "id"          => $id,
-            "form"        => $this->defaultForm,
-            "entity"      => $entity,
-            'route'       => $this->controllerRoute,
+            "id" => $id,
+            "form" => $this->defaultForm,
+            "entity" => $entity,
+            'route' => $this->controllerRoute,
             'routeParams' => $this->controllerRouteParams,
         ];
     }
@@ -289,11 +289,11 @@ abstract class BaseEntityController extends BaseController
         }
 
         $view = new ViewModel([
-                                  'id'          => $id,
-                                  'entity'      => $this->currentRepository->find($id),
-                                  'route'       => $this->controllerRoute,
-                                  'routeParams' => $this->controllerRouteParams,
-                              ]);
+            'id' => $id,
+            'entity' => $this->currentRepository->find($id),
+            'route' => $this->controllerRoute,
+            'routeParams' => $this->controllerRouteParams,
+        ]);
 
         $view->setTemplate("partial/delete.phtml");
 

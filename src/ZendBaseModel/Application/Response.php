@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\Application;
 
 /**
@@ -22,9 +23,9 @@ class Response implements ResponseInterface
      */
     public function __construct($success, $result = null, $message = null, $additionalData = null)
     {
-        $this->success        = $success;
-        $this->result         = $result;
-        $this->message        = $message;
+        $this->success = $success;
+        $this->result = $result;
+        $this->message = $message;
         $this->additionalData = $additionalData;
     }
 
@@ -63,10 +64,10 @@ class Response implements ResponseInterface
     public function toArray()
     {
         return [
-            'success'        => $this->success,
-            'result'         => $this->result,
-            'message'        => $this->message,
-            'additionalData' => $this->additionalData
+            'success' => $this->success,
+            'result' => $this->result,
+            'message' => $this->message,
+            'additionalData' => $this->additionalData,
         ];
     }
 

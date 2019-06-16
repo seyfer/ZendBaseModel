@@ -31,7 +31,7 @@ abstract class BaseEnum
     public static function getConstants()
     {
         if (empty(static::$constCache[get_called_class()])) {
-            $reflect                                = new \ReflectionClass(get_called_class());
+            $reflect = new \ReflectionClass(get_called_class());
             static::$constCache[get_called_class()] = $reflect->getConstants();
         }
 

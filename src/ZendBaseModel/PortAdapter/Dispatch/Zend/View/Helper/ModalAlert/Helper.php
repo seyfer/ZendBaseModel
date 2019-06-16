@@ -1,4 +1,5 @@
 <?php
+
 namespace ZendBaseModel\PortAdapter\Dispatch\Zend\View\Helper\ModalAlert;
 
 use Zend\View\Helper\AbstractHelper;
@@ -25,7 +26,7 @@ class Helper extends AbstractHelper
         'warning',
         'primary',
         'danger',
-        'dark'
+        'dark',
     ];
 
     /**
@@ -48,9 +49,9 @@ class Helper extends AbstractHelper
         $helperRenderer->setResolver($helperResolver);
 
         return $helperRenderer->render('modalAlert', [
-            'id'               => self::$identifier,
-            'availableClasses' => $this->availableClasses
+            'id' => self::$identifier,
+            'availableClasses' => $this->availableClasses,
         ]);
     }
 
-} 
+}
